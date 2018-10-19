@@ -25,3 +25,5 @@ Seguem alguns pontos onde o Docker facilita em todo este processo:
   > Isto permite que o mesmo Dockerfile que é utilizado para se compilar a aplicação, também opcionalmente faça a execução dos testes automatizados (Unitários ou Integração) 
 - Criação do processo de publicação da aplicação (docker-compose)
   > Permite que seja descrito (de forma declarativa) como deve ser criado o ambiente
+- Independência da aplicação quanto a suas fronteiras (docker-compose)
+  > Permite que a configuração de integrações/fronteiras seja feito na aplicação
