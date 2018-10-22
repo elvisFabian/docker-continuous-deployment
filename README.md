@@ -20,10 +20,10 @@ Considere que Docker de forma geral é uma tecnologia de criação/execução de
 
 Seguem alguns pontos onde o Docker facilita em todo este processo:
 - Criação do processo de compilação do software (via Dockerfile multi-stage)
-  > Isto permite que o mesmo Dockerfile que é utilizado para se compilar a aplicação, seja utilizado na ferramenta de automação
+  > Permite que o mesmo Dockerfile que é utilizado para se compilar a aplicação, seja utilizado na ferramenta de automação
 - Criação do processo de execução do teste automatizado (via Dockerfile multi-stage)
-  > Isto permite que o mesmo Dockerfile que é utilizado para se compilar a aplicação, também opcionalmente faça a execução dos testes automatizados (Unitários ou de Integração) 
+  > Permite que o mesmo Dockerfile que é utilizado para se compilar a aplicação, também opcionalmente faça a execução dos testes automatizados (Unitários ou de Integração) 
 - Criação do processo de publicação da aplicação (docker-compose)
   > Permite que seja descrito (de forma declarativa) como deve ser criado o ambiente
-- Independência da aplicação quanto a suas fronteiras (docker-compose)
+- Explicitação da aplicação quanto a suas fronteiras (docker-compose)
   > Permite que a configuração de integrações/fronteiras seja feito no arquivo de configuração do ambiente (docker-compose), explicitando suas dependências/integrações
