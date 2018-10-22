@@ -27,3 +27,30 @@ Seguem alguns pontos onde o Docker facilita em todo este processo:
   > Permite que seja descrito (de forma declarativa) como deve ser criado o ambiente
 - Explicitação da aplicação quanto a suas fronteiras (docker-compose)
   > Permite que a configuração de integrações/fronteiras seja feito no arquivo de configuração do ambiente (docker-compose), explicitando suas dependências/integrações
+
+
+## Como Funciona?
+
+> `Dockerfile`: [(Referência)](https://docs.docker.com/engine/reference/builder/)
+>
+> `docker-compose.yml`: [(Referência)](https://docs.docker.com/compose/compose-file/)
+
+O repositório GIT deve conter os seguintes arquivos:
+- `Dockerfile`
+  > Responsável por criar a imagem, compilar o código, executar os testes e executar a aplicação.
+- `docker-compose.build.yml`
+  > Responsável por conter os argumentos necessários para criar a imagem usando o `Dockerfile`.
+- `docker-compose.ci.yml`
+  > Responsável por conter os argumentos e serviços necessários para executar os testes de integração _(que necessitam de um ambiente completo para execução dos testes - ex: banco de dados)_.
+- `docker-compose.debug.yml`
+  > Responsável por conter os argumentos necessparios para executar a aplicação e expor uma porta a qual uma IDE irá utilizar para debug (attach).
+- _`docker-compose.{environment}.yml`_
+  > Responsável por conter as configurações (variáveis de ambiente, labels, etc) e imagem a ser utilizada para a publicação em um ambiente específico.
+    >
+    > Pode-se haver múltiplos arquivos que será utilizado pela ferramenta de automação para criar/publicar no ambiente específico.
+    >
+    > Exemplo:
+    > - `docker-compose.alpha-a.yml`
+    > - `docker-compose.beta.yml`
+    > - `docker-compose.rc.yml`
+    > - `docker-compose.stable.yml`
