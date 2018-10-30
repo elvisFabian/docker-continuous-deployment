@@ -32,9 +32,12 @@ ARG PROXY_PASSWORD
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
 
+ARG SONARQUBE_HOST=http://localhost:9000
+ENV SONARQUBE_HOST=$SONARQUBE_HOST
+
 # Instalar e configurar ferramentas
 
-RUN echo "<settings><mirrors><mirror><id>REGISTRY</id><name>REGISTRY</name><url>${MAVEN_REGISTRY}</url><mirrorOf>*</mirrorOf></mirror></mirrors><proxies><proxy><id>PROXY</id><active>${PROXY_ACTIVE}</active><protocol>${PROXY_PROTOCOL}</protocol><host>${PROXY_HOST}</host><port>${PROXY_PORT}</port><username>${PROXY_USERNAME}</username><password>${PROXY_PASSWORD}</password><nonProxyHosts></nonProxyHosts></proxy></proxies></settings>" > settings.xml
+echo "<settings><mirrors><mirror><id>REGISTRY</id><name>REGISTRY</name><url>${MAVEN_REGISTRY}</url><mirrorOf>*</mirrorOf></mirror></mirrors><proxies><proxy><id>PROXY</id><active>${PROXY_ACTIVE}</active><protocol>${PROXY_PROTOCOL}</protocol><host>${PROXY_HOST}</host><port>${PROXY_PORT}</port><username>${PROXY_USERNAME}</username><password>${PROXY_PASSWORD}</password><nonProxyHosts></nonProxyHosts></proxy></proxies><pluginGroups><pluginGroup>org.sonarsource.scanner.maven</pluginGroup></pluginGroups><profiles><profile><id>sonar</id><activation><activeByDefault>true</activeByDefault></activation><properties><sonar.host.url>${SONARQUBE_HOST}</sonar.host.url></properties></profile></profiles></settings>" > settings.xml
 
 # Restaurar os pacotes
 COPY pom.xml .
@@ -44,6 +47,9 @@ RUN mvn package -Dmaven.test.skip=true -Dspring-boot.repackage.skip=true -s sett
 COPY . .
 RUN mvn package -Dmaven.test.skip.exec=$SKIP_TEST -s settings.xml
 RUN cp target/*.jar ./app.jar
+
+# Executar os testes
+
 
 # Imagem usada para a fase de execução (executar)
 FROM openjdk:8-jre AS final
@@ -70,7 +76,8 @@ ARG HTTP_PROXY
 RUN echo "<config><add key="http_proxy" value="$HTTP_PROXY" /></config>" > NuGet.Config
 
 # Restaurar os pacotes
-COPY WebApplication9/WebApplication9.csproj WebApplication9/
+COPY . .
+# COPY Project/Project.csproj Project/ (desta forma é feito o cache, porém precisa informar o projeto)
 dotnet restore --source ${NUGET_REGISTRY}
 
 # Compilar o projeto
