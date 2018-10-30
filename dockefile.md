@@ -43,11 +43,12 @@ RUN mvn package -Dmaven.test.skip=true -Dspring-boot.repackage.skip=true -s sett
 # Compilar o projeto
 COPY . .
 RUN mvn package -Dmaven.test.skip.exec=$SKIP_TEST -s settings.xml
+RUN cp target/*.jar ./app.jar
 
 # Imagem usada para a fase de execução (executar)
 FROM openjdk:8-jre AS final
 WORKDIR /app
-COPY --from=build /app/*.jar /app/app.jar
+COPY --from=build /src/app.jar /app
 EXPOSE 80 443
 ```
 
@@ -74,10 +75,13 @@ dotnet restore --source ${NUGET_REGISTRY}
 
 # Compilar o projeto
 RUN dotnet publish /src/sistema-api.tjmt.jus.br/sistema-api.tjmt.jus.br.csproj -c ${CONFIGURATION} -o /app --no-build
+RUN cp /app/*.dll ./app.dll
 
 # Imagem usada para a fase de execução (executar)
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS final
 WORKDIR /app
+COPY --from=build /src/app.dll /app
+ENTRYPOINT dotnet app.dll
 EXPOSE 80 443
 ```
 
