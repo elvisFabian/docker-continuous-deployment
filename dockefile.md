@@ -49,12 +49,13 @@ RUN mvn package -Dmaven.test.skip.exec=$SKIP_TEST -s settings.xml
 RUN cp target/*.jar ./app.jar
 
 # Executar os testes
-ENTRYPOINT mvn test
+ENTRYPOINT mvn sonar:sonar -Dsonar.host.url=$SONARQUBE_HOST
 
 # Imagem usada para a fase de execução (executar)
 FROM openjdk:8-jre AS final
 WORKDIR /app
 COPY --from=build /src/app.jar /app
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar
 EXPOSE 80 443
 ```
 
