@@ -42,7 +42,7 @@ RUN mvn package -Dmaven.test.skip=true -Dspring-boot.repackage.skip=true -s sett
 
 # Compilar o projeto
 COPY . .
-RUN mvn package -Dmaven.test.skip.exec=$SKIP_TEST
+RUN mvn package -Dmaven.test.skip.exec=$SKIP_TEST -s settings.xml
 
 # Imagem usada para a fase de execução (executar)
 FROM openjdk:8-jre AS final
