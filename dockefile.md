@@ -49,7 +49,7 @@ RUN mvn package -Dmaven.test.skip.exec=$SKIP_TEST -s settings.xml
 RUN cp target/*.jar ./app.jar
 
 # Executar os testes
-
+ENTRYPOINT mvn test
 
 # Imagem usada para a fase de execução (executar)
 FROM openjdk:8-jre AS final
@@ -77,12 +77,18 @@ RUN echo "<config><add key="http_proxy" value="$HTTP_PROXY" /></config>" > NuGet
 
 # Restaurar os pacotes
 COPY . .
-# COPY Project/Project.csproj Project/ (desta forma é feito o cache, porém precisa informar o projeto)
 dotnet restore --source ${NUGET_REGISTRY}
+
+## Desta forma é feito o cache dos pacotes, porém precisa informar o projeto ()
+# COPY Project/Project.csproj Project/
+# dotnet restore --source ${NUGET_REGISTRY}
 
 # Compilar o projeto
 RUN dotnet publish /src/sistema-api.tjmt.jus.br/sistema-api.tjmt.jus.br.csproj -c ${CONFIGURATION} -o /app --no-build
 RUN cp /app/*.dll ./app.dll
+
+# Executar os testes
+ENTRYPOINT dotnet test
 
 # Imagem usada para a fase de execução (executar)
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS final
