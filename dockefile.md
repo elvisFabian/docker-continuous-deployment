@@ -34,7 +34,7 @@ ENV JAVA_OPTS=$JAVA_OPTS
 
 # Instalar e configurar ferramentas
 
-RUN echo "<settings><mirrors><mirror><id>REGISTRY</id><name>REGISTRY</name><url>${REGISTRY}</url><mirrorOf>*</mirrorOf></mirror></mirrors><proxies><proxy><id>PROXY</id><active>${PROXY_ACTIVE}</active><protocol>${PROXY_PROTOCOL}</protocol><host>${PROXY_HOST}</host><port>${PROXY_PORT}</port><username>${PROXY_USERNAME}</username><password>${PROXY_PASSWORD}</password><nonProxyHosts></nonProxyHosts></proxy></proxies></settings>" > settings.xml
+RUN echo "<settings><mirrors><mirror><id>REGISTRY</id><name>REGISTRY</name><url>${MAVEN_REGISTRY}</url><mirrorOf>*</mirrorOf></mirror></mirrors><proxies><proxy><id>PROXY</id><active>${PROXY_ACTIVE}</active><protocol>${PROXY_PROTOCOL}</protocol><host>${PROXY_HOST}</host><port>${PROXY_PORT}</port><username>${PROXY_USERNAME}</username><password>${PROXY_PASSWORD}</password><nonProxyHosts></nonProxyHosts></proxy></proxies></settings>" > settings.xml
 
 # Restaurar os pacotes
 COPY pom.xml .
