@@ -36,7 +36,7 @@ Seguem alguns pontos onde o Docker facilita em todo este processo:
 > `docker-compose.yml`: [(Referência)](https://docs.docker.com/compose/compose-file/)
 
 O repositório GIT deve conter os seguintes arquivos:
-- `Dockerfile` - (Exemplo)[./dockerfile.md]
+- `Dockerfile` - [Exemplo](./dockerfile.md)
   > Responsável por criar a imagem, compilar o código, executar os testes e executar a aplicação.
 - `docker-compose.build.yml`
   > Responsável por conter os argumentos necessários para criar a imagem usando o `Dockerfile`.
