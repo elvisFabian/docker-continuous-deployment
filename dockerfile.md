@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/), o qual é responsável por compilar, testar, executar o projeto.
+Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/), o qual é responsável por compilar, testar, executar o projeto (opcionalmente debugando).
 
 ## Padrões
 
