@@ -6,7 +6,9 @@ Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 
 ## Padrões
 
-- Deve expor os resultados dos testes no caminho `/TestResults`
+- Deve expor os resultados dos testes no caminho da variável `${OUTPUT_TEST_RESULTS}` (Padrão: `/TestResults`)
+- Estágio de Compilação deve ser nomeado `build`
+- Estágio de Execução deve ser nomeado `final`
 
 
 ## Exemplos
