@@ -32,7 +32,7 @@ Seguem alguns pontos onde o Docker facilita em todo este processo:
 ### Imagem
 
 Para uma imagem de aplicação em docker, existem 3 formas de se utilizar/configurar:
-- **Imagem por ambiente** (não recomendado): Onde cada imagem já vem com as configurações específicas para um ambiente em questão. Ou seja, as configurações estão dentro do container (Ex: web.config, application.properties, etc).
+- **Imagem por ambiente** (não recomendado): Onde cada imagem já vem com as configurações específicas para um ambiente em questão. Ou seja, as configurações estão dentro do container (Ex: web.config, application.properties, etc) e sua mudança necessidta da criação de uma nova imagem.
   > Em um ambiente de Integração Contínua, isto impede que uma mesma imagem passe pelas fases de homologação/qualidade do produto. Fazendo que para cada faze, deve-se criar uma nova imagem.
 - **Imagem com todas as configurações** de todos os ambientes (não recomendado): Onde a imagem possui as configurações de todos os ambientes (utilizados no processo de desenvolvimento).
   > Este modelo impede que uma imagem possa ser reutilizada em uma infraestrutura diferente, pois nela já contém as configurações de todos os possíveis ambientes.
