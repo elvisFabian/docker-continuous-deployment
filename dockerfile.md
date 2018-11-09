@@ -6,7 +6,8 @@ Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 
 ## Padrões
 
-- Deve expor os resultados dos testes no caminho da variável `${OUTPUT_TEST_RESULTS}` (Padrão: `/TestResults`)
+- Deve expor os resultados dos testes no caminho definido pela variável `${OUTPUT_TEST_RESULTS}` (Padrão: `/TestResults`)
+- Deve expor os arquivos do resultado da compilação no caminho definido pela variável `${OUTPUT_PUBLISH_RESULTS}` (Padrão: `/artifacts`)
 - Deve possíbilitar o Debug pela principal IDE da tecnologia (JAVA=Eclipse, .NET=Visual Studio, NODE=VSCode) mais o VSCode
 - Os pacotes devem ser baixados em uma camada (layer) do docker e somente refeita quando solicitado (Ex: usando o argumento `--no-cache`)
 - Deve possibilitar informar o Proxy
