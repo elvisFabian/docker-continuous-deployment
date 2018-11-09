@@ -52,7 +52,7 @@ O repositório GIT deve conter os seguintes arquivos:
   > Responsável por conter os argumentos necessários para criar a imagem usando o `Dockerfile`.
 - `docker-compose.ci.yml`
   > Responsável por conter os argumentos e serviços necessários para executar os testes de integração _(que necessitam de um ambiente completo para execução dos testes - ex: banco de dados)_.
-- `docker-compose.debug.yml`
+- `docker-compose.yml`
   > Responsável por conter os argumentos necessários para executar a aplicação e expor uma porta em que a IDE irá utilizar para debug (attach).
 - _`docker-compose.{environment}.yml`_
   > Responsável por conter as configurações (variáveis de ambiente, labels, etc) e imagem a ser utilizada para a publicação em um ambiente específico.
