@@ -46,7 +46,7 @@ Para uma imagem de aplicação em docker, existem 3 formas de se utilizar/config
 > `docker-compose.yml`: [(Referência)](https://docs.docker.com/compose/compose-file/)
 
 O repositório GIT deve conter os seguintes arquivos:
-- `Dockerfile` - [Exemplo](./dockerfile.md)
+- `Dockerfile` - [Documentação](./dockerfile.md)
   > Responsável por criar a imagem, compilar o código, executar os testes e executar a aplicação.
 - `docker-compose.build.yml`
   > Responsável por conter os argumentos necessários para criar a imagem usando o `Dockerfile`.
