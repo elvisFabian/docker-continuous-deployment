@@ -7,6 +7,7 @@ Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 ## Padrões
 
 - Deve expor os resultados dos testes no caminho da variável `${OUTPUT_TEST_RESULTS}` (Padrão: `/TestResults`)
+- Deve possíbilitar o Debug pela principal IDE da tecnologia (JAVA=Eclipse, .NET=Visual Studio, NODE=VSCode) mais o VSCode
 - Os pacotes devem ser baixados em uma camada (layer) do docker e somente refeita quando informado o argumento `--no-cache`
 - Estágio de Compilação deve ser nomeado `build`
 - Estágio de Execução deve ser nomeado `final`
