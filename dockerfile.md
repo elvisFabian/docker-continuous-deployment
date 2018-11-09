@@ -17,6 +17,18 @@ Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 - Deve executar os testes no estágio de `build` como `entrypoint` (o que permite a criação de um ambiente para os testes de integração - Ex: banco de dados)
 - Deve suportar a coleta da execução dos testes pelo Sonarqube. Tanto do resultado dos testes quanto a cobertura.
 
+## Etapas
+
+Todas as linguagens possuem as seguintes etapas em um Dockerfile. Estas são:
+
+1. Imagem usada para a fase de construção (restaurar, compilar, testar)
+2. Argumentos necessários para a compilação do projeto
+3. Instalar e configurar ferramentas
+4. Restaurar os pacotes
+5. Compilar o projeto
+6. Executar os testes
+7. Imagem usada para a fase de execução (executar)
+
 ## Exemplos
 
 ### JAVA
