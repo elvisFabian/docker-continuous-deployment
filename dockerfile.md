@@ -84,7 +84,7 @@ ARG RUN_TEST=false
 
 # Restaurar os pacotes
 COPY . .
-dotnet restore --source ${NUGET_REGISTRY}
+RUN dotnet restore --source ${NUGET_REGISTRY}
 
 ## Desta forma é feito o cache dos pacotes, porém precisa informar o projeto ()
 # COPY Project/Project.csproj Project/
