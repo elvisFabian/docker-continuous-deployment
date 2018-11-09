@@ -49,7 +49,7 @@ ENTRYPOINT mvn test
 FROM openjdk:8-jre AS final
 WORKDIR /app
 COPY --from=build /src/app.jar /app
-ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar
+ENTRYPOINT exec java $JAVA_OPTS -jar app.jar
 EXPOSE 80 443
 ```
 
