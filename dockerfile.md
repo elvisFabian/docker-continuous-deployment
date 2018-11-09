@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/), o qual é responsável por compilar, testar, executar o projeto (opcionalmente debugando).
+Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/), o qual é responsável por compilar, testar, executar o projeto (permitindo debug).
 
 ## Padrões
 
@@ -40,10 +40,7 @@ WORKDIR /src
 EXPOSE 80 443
 
 # Argumentos necessários para a compilação do projeto
-ARG SKIP_TEST=true
 
-ARG JAVA_OPTS
-ENV JAVA_OPTS=$JAVA_OPTS
 
 # Instalar e configurar ferramentas
 
@@ -77,7 +74,7 @@ WORKDIR /src
 EXPOSE 80 443
 
 # Argumentos necessários para a compilação do projeto
-ARG RUN_TEST=false
+
 
 # Instalar e configurar ferramentas
 
