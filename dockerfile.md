@@ -9,10 +9,12 @@ Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 - Deve expor os resultados dos testes no caminho da variável `${OUTPUT_TEST_RESULTS}` (Padrão: `/TestResults`)
 - Deve possíbilitar o Debug pela principal IDE da tecnologia (JAVA=Eclipse, .NET=Visual Studio, NODE=VSCode) mais o VSCode
 - Os pacotes devem ser baixados em uma camada (layer) do docker e somente refeita quando solicitado (Ex: usando o argumento `--no-cache`)
+- Deve possibilitar informar o Proxy
+- Deve possibilitar informar o Registry do gerenciador de bibliotecas (MAVEN, NUGET, NPM) via argumento. (`NUGET_REGISTRY_{ID}`, `MAVEN_REGISTRY_{ID}`, `NPM_REGISTRY_{ID}`)
 - Estágio de Compilação deve ser nomeado `build`
 - Estágio de Execução deve ser nomeado `final`
-- Deve possibilitar informar o Registry do gerenciador de bibliotecas (MAVEN, NUGET, NPM) via argumento. (`NUGET_REGISTRY_{ID}`, `MAVEN_REGISTRY_{ID}`, `NPM_REGISTRY_{ID}`)
-- Deve possibilitar informar o Proxy
+- Deve executar os testes no estágio de `build` como `entrypoint` (o que permite a criação de um ambiente para os testes de integração - Ex: banco de dados)
+- Deve suportar a coleta da execução dos testes pelo Sonarqube. Tanto do resultado dos testes quanto a cobertura.
 
 ## Exemplos
 
