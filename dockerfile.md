@@ -4,6 +4,8 @@
 
 Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/), o qual é responsável por compilar, testar, executar o projeto (permitindo debug).
 
+  - Dependência: Criar um entrypoint para executar teste de integração ou rodar a aplicação
+
 ## Padrões
 
 - Deve expor os resultados dos testes no caminho definido pela variável `${OUTPUT_TEST_RESULTS}` (Padrão: `/TestResults`)
@@ -21,13 +23,25 @@ Criar o arquivo [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 
 Todas as linguagens possuem as seguintes etapas em um Dockerfile. Estas são:
 
-1. Imagem usada para a fase de construção (restaurar, compilar, testar)
-2. Argumentos necessários para a compilação do projeto
-3. Instalar e configurar ferramentas
-4. Restaurar os pacotes
-5. Compilar o projeto
-6. Executar os testes
-7. Imagem usada para a fase de execução (executar)
+1. Fase de Construção
+  1. Imagem usada para a fase de construção (restaurar, compilar, testar)
+  1. Argumentos necessários para a compilação do projeto
+    1. TODO: Definir argumentos padrões
+  1. Instalar ferramentas
+    1. Análise de código (Sonarqube)
+  1. Configurar ferramentas
+  1. Restaurar os pacotes
+  1. Compilar o projeto
+  1. Executar os testes
+    1. Rodar teste unitário
+    1. Rodar teste de integração (No entrypoint por meio de variável de ambiente)
+    1. Guardar os resultados nos diretórios padrões
+1. Fase de Execução
+  1. Imagem usada para a fase de execução (executar)
+  1. Configurar SO
+    1. Setar Timezone
+    1. Setar Liguagem
+    
 
 ## Exemplos
 
