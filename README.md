@@ -60,7 +60,7 @@ O repositório GIT deve conter os seguintes arquivos:
     > Pode-se haver múltiplos arquivos que será utilizado pela ferramenta de automação para criar/publicar no ambiente específico.
     >
     > Exemplo:
-    > - `docker-compose.alpha-a.yml`
-    > - `docker-compose.beta.yml`
-    > - `docker-compose.rc.yml`
-    > - `docker-compose.stable.yml`
+    > - `docker-compose.dev.yml`
+    > - `docker-compose.qa.yml`
+    > - `docker-compose.stage.yml`
+    > - `docker-compose.prod.yml`
