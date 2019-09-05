@@ -1,0 +1,1 @@
+> Responsável por conter os argumentos e serviços necessários para executar os testes de integração _(que necessitam de um ambiente completo para execução dos testes - ex: banco de dados)_.

@@ -41,26 +41,20 @@ Para uma imagem de aplicação em docker, existem 3 formas de se utilizar/config
 
 ## Como Funciona?
 
-> `Dockerfile`: [(Referência)](https://docs.docker.com/engine/reference/builder/)
->
-> `docker-compose.yml`: [(Referência)](https://docs.docker.com/compose/compose-file/)
+* `Dockerfile`: [(Referência)](https://docs.docker.com/engine/reference/builder/)
+* `docker-compose.yml`: [(Referência)](https://docs.docker.com/compose/compose-file/)
 
 O repositório GIT deve conter os seguintes arquivos:
 - `Dockerfile` - [Documentação](./dockerfile.md)
-  > Responsável por criar a imagem, compilar o código, executar os testes e executar a aplicação.
-- `docker-compose.build.yml`
-  > Responsável por conter os argumentos necessários para criar a imagem usando o `Dockerfile`.
-- `docker-compose.ci.yml`
-  > Responsável por conter os argumentos e serviços necessários para executar os testes de integração _(que necessitam de um ambiente completo para execução dos testes - ex: banco de dados)_.
-- `docker-compose.yml`
-  > Responsável por conter os argumentos necessários para executar a aplicação e expor uma porta em que a IDE irá utilizar para debug (attach).
-- _`docker-compose.{environment}.yml`_
-  > Responsável por conter as configurações (variáveis de ambiente, labels, etc) e imagem a ser utilizada para a publicação em um ambiente específico.
-    >
-    > Pode-se haver múltiplos arquivos que será utilizado pela ferramenta de automação para criar/publicar no ambiente específico.
-    >
-    > Exemplo:
-    > - `docker-compose.dev.yml`
-    > - `docker-compose.qa.yml`
-    > - `docker-compose.stage.yml`
-    > - `docker-compose.prod.yml`
+- `docker-compose.yml` - [Documentação](./docker-compose.yml.md)
+- `docker-compose.cd-ci.yml` - [Documentação](./docker-compose.cd-ci.yml.md)
+- `docker-compose.cd-final.yml` - [Documentação](./docker-compose.cd-final.yml.md)
+- `docker-compose.cd-publish.yml` - [Documentação](./docker-compose.cd-publish.yml.md)
+- `docker-compose.cd-release.yml` - [Documentação](./docker-compose.cd-release.yml.md)
+- `docker-compose.override.yml` - [Documentação](./docker-compose.override.yml.md)
+- `docker-compose.{environment}.yml` [Documentação](./docker-compose.environment.yml.md)
+
+
+  
+
+
