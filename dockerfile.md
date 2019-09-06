@@ -103,6 +103,6 @@ Deve expor os arquivos do resultado da compilação no caminho definido pela var
 
 ## Exemplos
 
-[.Net](./netcore.md)
-[Java](./java.md)
-[angular](./angular.md)
+* [.Net](./netcore.md)
+* [Java](./java.md)
+* [angular](./angular.md)
